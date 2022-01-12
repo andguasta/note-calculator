@@ -16,7 +16,8 @@ int main()
     //printf("Diff is %d\n", semitFromA4);
 
     noteFrequency = baseFreq * pow(2, (float)semitFromA4/12.f);
-    printf("The note Frequency is %f\n", noteFrequency);
+    printf("The Note Frequency is %0.2fhz\n", noteFrequency);
+    printf("The Note Midi Number is: %d\n", getMidiNote(&noteInput));
 
     return 0;
 }
