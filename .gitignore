@@ -1,0 +1,4 @@
+#Exlcude object files
+*.o 
+#Exclude the program
+notecalc
