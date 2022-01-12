@@ -4,19 +4,19 @@ int getMidiNote();
 
 int main()
 {
-    // const char* noteNames[] = {"C", "Cb", "D", "Db", "E", "F", "Fb", "G", "Gb", "A", "Ab", "B"};
-
-    // double calc = 1;
-    // double baseFreq = 440;
-    // double calculatedFreq1 = 0;
-    // double calculatedFreq2 = 0;
-    // for (int i = 0; i < 24; i++)
-    // {
-    //     calculatedFreq1 = baseFreq * pow(2, (float)i/12.f);
-    //     printf("note %s is : %f\n", noteNames[(i+9)%12], calculatedFreq1);
-    //     printf("--------------\n");
-    // }
-    getMidiNote();
+    double baseFreq = 440;
+    double noteFrequency;
+    int semitFromA4;
     
+    char noteInput[4];
+    printf("Enter Note plus octave Ex. C4 or Eb3: ");
+    scanf("%s", noteInput);
+    
+    semitFromA4 = getMidiNote(&noteInput) - getMidiNote("A4");
+    //printf("Diff is %d\n", semitFromA4);
+
+    noteFrequency = baseFreq * pow(2, (float)semitFromA4/12.f);
+    printf("The note Frequency is %f\n", noteFrequency);
+
     return 0;
 }
