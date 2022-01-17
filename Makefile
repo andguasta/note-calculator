@@ -1,8 +1,9 @@
-getMidiNote.o: getMidiNote.c
-	clang -c getMidiNote.c
+%.o: %.c
+	clang -g -c $<
 
-notecalc.o: notecalc.c functions.h
-	clang -c notecalc.c
+notecalc: notecalc.o conversions.o
+	clang -g notecalc.o conversions.o -o notecalc
 
-notecalc: notecalc.o getMidiNote.o
-	clang notecalc.o getMidiNote.o -o notecalc
+clean:
+	rm notecalc;
+	rm *.o; 
