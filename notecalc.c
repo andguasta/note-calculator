@@ -74,36 +74,31 @@ int main(int argc, char const *argv[])
     }
     else if (mode == 2)
     {
+        double userFrequency;
         while(1)
         {
-            short validity = 0;
+            //short validity = 0;
             printf("Enter a frequency Ex 350:\n");
             scanf("%s", userInput);
-            for (size_t i = 0; i < strlen(userInput); i++)
-            {
-                if (!isdigit(userInput[i]))
-                {
-                    printf("Invalid character found, please enter an int\n");
-                    break;
-                }
-                if (i == strlen(userInput) - 1)
-                {
-                    validity = 1;
-                }
-            }
-            if (validity == 1)
+            char* garbageInput;
+            userFrequency = strtod(userInput, &garbageInput);
+            if (userFrequency > 0.0f)
             {
                 break;
-            }            
+            }
+            else
+            {
+                printf("Please enter a valid Input\n");
+            }         
         }
-        double userFrequency = atoi(userInput);
+        // double userFrequency = atoi(userInput);
         int noteNumber = -1;
         noteNumber = freq2Midi(userFrequency);
         printf("The Note Midi Number is: %d\n", noteNumber);
         char noteName[4];
         midi2String(noteNumber, noteName);
         printf("The Note Name is: %s\n", noteName);
-    }
+    }\
     free(userInput);
     return 0;
 }
